@@ -1,0 +1,15 @@
+{
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "checkJs": true,
+        "baseUrl": ".",
+        "target": "es2015",
+        "module": "commonJS",
+        "experimentalDecorators": true,
+        "paths": {
+            "components/*": ["./src/components/*"],
+            "models/*": ["./src/models/*"],
+            "services/*": ["./src/services/*"]
+        }
+    }
+}

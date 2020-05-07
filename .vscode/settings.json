@@ -1,0 +1,14 @@
+{
+  "eslint.enable": true,
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "jasmineExplorer.debuggerPort": 9222,
+  "jasmineExplorer.logpanel": true,
+  "jasmineExplorer.config": "jasmine.json",
+  "jasmineExplorer.nodePath": "default"
+}
