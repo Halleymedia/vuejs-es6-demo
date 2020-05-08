@@ -6,7 +6,7 @@ A quick experiment into modern JavaScript development with the MVVM pattern.
 ## Why it's cool
  * Small, single resposibility components;
  * Simple ES6 classes, nicely decoupled from the rendering library (Vue.js in this case);
- * It leverages the language capabilities: use public properties to expose data to the ViewModel; keep them private for internal state;
+ * It leverages language capabilities: use public properties to expose data to the ViewModel; keep them private for state;
  * Use of decorators to configure components and their route pattern;
  * Navigation parameters are passed in as constructor arguments;
  * All scripts and templates packed in a single `app.js` file;
