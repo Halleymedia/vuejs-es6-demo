@@ -2,7 +2,7 @@ import { component } from 'services/decorators';
 import PokemonDetailDto from 'models/PokemonDetailDto';
 import client from 'services/client';
 
-@component('pokemon-detail', '/pokemon/(?<id>[0-9]+)/?', 'Pokemon detailed info')
+@component('pokemon-detail', '/pokemon/(?<id>[0-9]+)/?', 'Pokémon detailed info')
 export default class PokemonDetail {
 
     /**

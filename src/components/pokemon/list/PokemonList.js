@@ -2,7 +2,7 @@ import { component } from 'services/decorators';
 import PokemonResultDto from 'models/PokemonResultDto';
 import client from 'services/client';
 
-@component('pokemon-list', '^/$', 'Pokemon list')
+@component('pokemon-list', '^/$', 'Pokémon list')
 export default class PokemonList {
 
     /**
