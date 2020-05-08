@@ -56,9 +56,9 @@ const preventNavigation = (history, event) => {
 };
 
 /**
- * @param {string} elementName
+ * @param {String} elementName
  * @param {any} params
- * @param {string} title
+ * @param {String} title
  * @returns Promise
  */
 const notifySubscribersOfNavigatedEvent = async (elementName, params, title) => {
@@ -124,9 +124,9 @@ export class Router {
     }
 
     /**
-     * @param {string} componentName
-     * @param {string} pattern
-     * @param {string|undefined} [title]
+     * @param {String} componentName
+     * @param {String} pattern
+     * @param {String|undefined} [title]
      */
     addRoute (componentName, pattern, title = null) {
         const foundRoutes = routes.filter(r => r.componentName == componentName);
@@ -141,7 +141,7 @@ export class Router {
     };
 }
 
-export default new Router(
+export default new Router( //TODO: Decouple this from globals. They should be provided by the HTML page or maybe use the 'global' keyword.
         typeof window !== 'undefined' ? window.location : null,
         typeof window !== 'undefined' ? window.history : null,
         //Can't use addEventListener.bind here or it won't work on IE11 because it's a native method
@@ -157,12 +157,12 @@ class ComponentRoute {
         this.title = title;
     }
 
-    /** @var {string} */
+    /** @var {String} */
     componentName;
 
-    /** @var {string} */
+    /** @var {String} */
     title;
     
-    /** @var {string} */
+    /** @var {String} */
     pattern;
 }

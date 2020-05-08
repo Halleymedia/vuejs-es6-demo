@@ -4,9 +4,9 @@ import router from 'services/router';
 const getTargetName = (target) => target.toString();
 
 /**
- * @param {string} elementName
- * @param {string|null} [route]
- * @param {string|null} [title]
+ * @param {String} elementName
+ * @param {String|null} [route]
+ * @param {String|null} [title]
  */
 export const component = (elementName, route = null, title = null) => 
     /** @type {any} */ (target => {
@@ -20,7 +20,7 @@ export const component = (elementName, route = null, title = null) =>
     });
 
 /**
- * @param {string} template
+ * @param {String} template
  */
 export const template = (template) => 
     /** @type {any} */ (target => {

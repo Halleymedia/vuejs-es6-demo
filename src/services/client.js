@@ -4,8 +4,8 @@ import PokemonDetailDto from 'models/PokemonDetailDto';
 const baseUri = 'https://pokeapi.co/api/v2';
 
 /**
- * @param {string} [method]
- * @param {string} [path]
+ * @param {String} [method]
+ * @param {String} [path]
  * @returns {Promise<any>}
  */
 const request = async (method, path) => {

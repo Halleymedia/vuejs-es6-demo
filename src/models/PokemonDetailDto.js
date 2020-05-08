@@ -2,8 +2,8 @@ export default class PokemonDetailDto {
 
     /**
      * @param {number} id
-     * @param {string} name
-     * @param {string} picture
+     * @param {String} name
+     * @param {String} picture
      * @param {string[]} types
      * @param {string[]} moves
      */
@@ -18,15 +18,15 @@ export default class PokemonDetailDto {
     /** @type {number} */
     id;
 
-    /** @type {string} */
+    /** @type {String} */
     name;
 
-    /** @type {string} */
+    /** @type {String} */
     picture;
 
-    /** @type {string[]} */
+    /** @type {String[]} */
     types;
 
-    /** @type {string[]} */
+    /** @type {String[]} */
     moves;
 }

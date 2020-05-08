@@ -39,8 +39,8 @@ class App {
     }
 
     /**
-     * @param {string} elementName
-     * @param {string} componentName
+     * @param {String} elementName
+     * @param {String} componentName
      * @param {ObjectConstructor} componentConstructor
      */
     registerComponent(elementName, componentName, componentConstructor) {
@@ -50,7 +50,7 @@ class App {
     }
 
     /**
-     * @param {string} componentName 
+     * @param {String} componentName 
      * @returns {VueComponentDescriptor}
      */
     getOrCreateDescriptor(componentName) {
@@ -61,7 +61,7 @@ class App {
     }
 
     /**
-     * @param {string} componentName
+     * @param {String} componentName
      * @param {string[]} methods
      */
     registerComponentMethods(componentName, methods) {
@@ -72,16 +72,16 @@ class App {
     }
 
     /**
-     * @param {string} componentName
-     * @param {string} template
+     * @param {String} componentName
+     * @param {String} template
      */
     registerComponentTemplate(componentName, template) {
         this.getOrCreateDescriptor(componentName).template = template;
     }
 
     /**
-     * @param {string} componentName
-     * @param {string} propertyName
+     * @param {String} componentName
+     * @param {String} propertyName
      */
     registerComponentProperty(componentName, propertyName) {
         this.getOrCreateDescriptor(componentName).properties.push(propertyName);
@@ -104,12 +104,12 @@ class VueComponentDescriptor {
     params;
 
     /**
-     * @type {string}
+     * @type {String}
      */
     componentName;
 
     /**
-     * @type {string}
+     * @type {String}
      */
     elementName;
 
@@ -119,27 +119,27 @@ class VueComponentDescriptor {
     factory;
 
     /**
-     * @type {string[]}
+     * @type {String[]}
      */
     methods = [];
 
     /**
-     * @type {string[]}
+     * @type {String[]}
      */
     computed = [];
 
     /**
-     * @type {string[]}
+     * @type {String[]}
      */
     properties = [];
 
     /**
-     * @type {string}
+     * @type {String}
      */
     template;
 
     /**
-     * @param {string} componentName
+     * @param {String} componentName
      */
     constructor(componentName) {
         this.componentName = componentName;

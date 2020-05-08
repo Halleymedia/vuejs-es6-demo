@@ -2,7 +2,7 @@ export default class PokemonResultDto {
 
     /**
      * @param {number} id
-     * @param {string} name
+     * @param {String} name
      */
     constructor(id, name) {
         this.id = id;
@@ -12,10 +12,10 @@ export default class PokemonResultDto {
     /** @type {number} */
     id;
 
-    /** @type {string} */
+    /** @type {String} */
     name;
     
-    /** @type {string} */
+    /** @type {String} */
     get url() {
         return `/pokemon/${this.id}`;
     };

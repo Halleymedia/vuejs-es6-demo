@@ -6,12 +6,12 @@ import app from 'services/app';
 export default class MainLayout {
 
     /**
-     * @type {string}
+     * @type {String}
      */
     componentName;
 
     /**
-     * @type {string}
+     * @type {String}
      */
     title;
 
@@ -20,9 +20,9 @@ export default class MainLayout {
     }
 
     /**
-     * @param {string} componentName
+     * @param {String} componentName
      * @param {any} params
-     * @param {string} title
+     * @param {String} title
      */
     async onNavigated(componentName, params, title) {
         this.componentName = componentName;
