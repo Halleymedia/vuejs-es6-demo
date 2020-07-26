@@ -1,6 +1,8 @@
-import { component } from 'services/decorators';
+import { Component } from 'services/Decorators';
+import template from './LoadingIndicator.html';
 
-@component('loading-indicator')
-export default class LoadingIndicator {
+@Component('loading-indicator', template)
+class LoadingIndicator {
 
 }
+export default LoadingIndicator;

@@ -7,8 +7,8 @@
     <link href="/app.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div id="app"></div>
-    <script src="/app.js"></script>
-    <script>App.bootstrap(document.getElementById('app'), function(error) { console.error(error); alert(error); });</script>
+    <div id="app-container"></div>
+    <script src="index.js"></script>
+    <script>new App(document.querySelector('#app-container'), function(error) { console.error(error); alert(error); });</script>
 </body>
 </html>

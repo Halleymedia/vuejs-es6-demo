@@ -6,11 +6,11 @@ A quick experiment into modern JavaScript development with the MVVM pattern.
 ## Why it's cool
  * Small, single resposibility components;
  * Simple ES6 classes, nicely decoupled from the rendering library (Vue.js in this case);
- * It leverages language capabilities: use public properties to expose data to the ViewModel; keep them private for state;
+ * It leverages language capabilities: use public properties to expose data to the view; keep them private for state;
  * Use of decorators to configure components and their route pattern;
  * Navigation parameters are passed in as constructor arguments;
- * All scripts and templates packed in a single `app.js` file;
- * Works on Internet Explorer 10-11;
+ * All scripts, templates and SVG images packed in a single `index.js` file thanks to Webpack;
+ * Works on Internet Explorer 11;
  * Live reloading for improved productivity;
  * Pokémon.
 
@@ -30,7 +30,4 @@ This project supports debugging with the [Debugger for Chrome Extension](https:/
 
 ## TODO
  * Event publishing and handling;
- * Computed properties;
- * Component properties;
- * Unit testing;
- * Dependencies cleanup.
+ * Unit testing.

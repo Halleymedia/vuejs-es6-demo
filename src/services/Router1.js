@@ -41,17 +41,21 @@ const preventNavigation = (history, event) => {
     let target = (/** @type {HTMLElement} */ event.target);
     while (target) {
         if (target.tagName.toLowerCase() != 'a') {
-            target = target.parentElement;
+            if (target.parentElement) {
+                target = target.parentElement;
+            }
             continue;
         }
         const href = target.getAttribute('href');
         const title = target.getAttribute('title');
+        if (!href) {
+            return;
+        }
         //Push state
-        history.pushState({}, title, href);
+        history.pushState({}, title || '', href);
         event.preventDefault();
         event.stopPropagation();
         processPath(href);
-        return;
     }
 };
 
@@ -77,12 +81,12 @@ const notifySubscribersOfPageLoadedEvent = async () => {
 };
 
 /**
- * @type {Array<(elementName: string, params: any, title: string) => Promise>}
+ * @type {Array<(elementName: string, params: any, title: string) => Promise<any>>}
  */
 const navigatedSubscribers = [];
 
 /**
- * @type {Array<() => Promise>}
+ * @type {Array<() => Promise<any>>}
  */
 const pageLoadedSubscribers = [];
 
@@ -97,9 +101,9 @@ export class Router {
     /**
      * @param {History} history
      * @param {Location} location
-     * @param {(callback: (ev: Event) => any, capture: boolean) => void} addClickEventListener
-     * @param {(callback: (ev: Event) => any, capture: boolean) => void} addLoadEventListener
-     * @param {(callback: (ev: Event) => any, capture: boolean) => void} addPopStateEventListener
+     * @param {((callback: (ev: Event) => any, capture: boolean) => void)|undefined} addClickEventListener
+     * @param {((callback: (ev: Event) => any, capture: boolean) => void)|undefined} addLoadEventListener
+     * @param {((callback: (ev: Event) => any, capture: boolean) => void)|undefined} addPopStateEventListener
      */
     constructor(location, history, addClickEventListener, addLoadEventListener, addPopStateEventListener) {
         this.history = history;
@@ -110,14 +114,14 @@ export class Router {
     }
 
     /**
-     * @param {(elementName: string, params: any, title: string) => Promise} callback
+     * @param {(elementName: string, params: any, title: string) => Promise<any>} callback
      */
     onNavigated(callback) {
         navigatedSubscribers.push(callback);
     }
 
     /**
-     * @param {() => Promise} callback
+     * @param {() => Promise<any>} callback
      */
     onPageLoaded(callback) {
         pageLoadedSubscribers.push(callback);
@@ -128,7 +132,7 @@ export class Router {
      * @param {String} pattern
      * @param {String|undefined} [title]
      */
-    addRoute (componentName, pattern, title = null) {
+    addRoute (componentName, pattern, title) {
         const foundRoutes = routes.filter(r => r.componentName == componentName);
         if (foundRoutes.length > 0) {
             return;
@@ -136,33 +140,41 @@ export class Router {
         routes.push(new ComponentRoute(
             componentName,
             typeof(pattern) == 'string' ? new RegExp(pattern) : pattern,
-            title
+            title || ''
         ));
     };
 }
 
-export default new Router( //TODO: Decouple this from globals. They should be provided by the HTML page or maybe use the 'global' keyword.
-        typeof window !== 'undefined' ? window.location : null,
-        typeof window !== 'undefined' ? window.history : null,
+const global = typeof window !== 'undefined' ? window : globalThis; //IE11 does not have the globalThis keyword
+
+export default new Router( //TODO: Decouple this from globals. They should be provided by the HTML page or maybe use the 'globalThis' keyword.
+        global.location,
+        global.history,
         //Can't use addEventListener.bind here or it won't work on IE11 because it's a native method
-        typeof document !== 'undefined' ? (callback, capture) => { document.addEventListener('click', callback, capture) } : null,
-        typeof window !== 'undefined' ? (callback, capture) => { window.addEventListener('load', callback, capture) } : null,
-        typeof window !== 'undefined' ? (callback, capture) => { window.addEventListener('popstate', callback, capture) } : null);
+        global.document ? (callback, capture) => { document.addEventListener('click', callback, capture) } : undefined,
+        (callback, capture) => { global.addEventListener('load', callback, capture) },
+        (callback, capture) => { global.addEventListener('popstate', callback, capture) });
 
 class ComponentRoute {
 
+    /** @type {string} */
+    componentName;
+
+    /** @type {RegExp} */
+    pattern;
+
+    /** @type {string} */
+    title;
+
+    /**
+     * Defines a component route
+     * @param {string} componentName 
+     * @param {RegExp} pattern 
+     * @param {string} title 
+     */
     constructor(componentName, pattern, title) {
         this.componentName = componentName;
         this.pattern = pattern;
         this.title = title;
     }
-
-    /** @var {String} */
-    componentName;
-
-    /** @var {String} */
-    title;
-    
-    /** @var {String} */
-    pattern;
 }

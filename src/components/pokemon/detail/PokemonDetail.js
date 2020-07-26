@@ -1,9 +1,10 @@
-import { component } from 'services/decorators';
+import { Component } from 'services/Decorators';
+import template from 'PokemonDetail.html';
 import PokemonDetailDto from 'models/PokemonDetailDto';
-import client from 'services/client';
+import client from 'services/Client';
 
-@component('pokemon-detail', '/pokemon/(?<id>[0-9]+)/?', 'Pokémon detailed info')
-export default class PokemonDetail {
+@Component('pokemon-detail', template, '/pokemon/(?<id>[0-9]+)/?', 'Pokémon detailed info')
+class PokemonDetail {
 
     /** @type {PokemonDetailDto|null} */
     result = null;
@@ -23,3 +24,5 @@ export default class PokemonDetail {
         this.result = result;
     }
 }
+
+export default PokemonDetail;

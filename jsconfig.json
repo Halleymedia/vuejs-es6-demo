@@ -4,7 +4,8 @@
         "checkJs": true,
         "baseUrl": ".",
         "target": "es2015",
-        "module": "commonJS",
+        "moduleResolution": "node",
+        "strict": true,
         "experimentalDecorators": true,
         "paths": {
             "components/*": ["./src/components/*"],

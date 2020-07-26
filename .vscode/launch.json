@@ -8,12 +8,11 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome debug",
-            "url": "http://localhost:8088/",
+            "url": "http://localhost:3000/",
             "webRoot": "${workspaceFolder}/dist",
             "skipFiles": [
                 "${workspaceFolder}/node_modules/**/*.js",
-                "<node_internals>/**/*.js",
-                "${workspaceFolder}/dist/**/*.js"
+                "<node_internals>/**/*.js"
             ],
             "sourceMaps": true,
             "preLaunchTask": "serve",

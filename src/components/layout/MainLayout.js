@@ -1,17 +1,17 @@
-import { component } from 'services/decorators'; 
-import router from 'services/router';
-import app from 'services/app';
+import { Component } from 'services/Decorators'; 
+import template from './MainLayout.html';
+import router from 'services/Router';
 
-@component('main-layout')
-export default class MainLayout {
+@Component('main-layout', template)
+class MainLayout {
 
     /**
-     * @type {String}
+     * @type {string|undefined}
      */
     componentName;
 
     /**
-     * @type {String}
+     * @type {string|undefined}
      */
     title;
 
@@ -27,6 +27,7 @@ export default class MainLayout {
     async onNavigated(componentName, params, title) {
         this.componentName = componentName;
         this.title = title;
-        app.setComponentParams(componentName, params);
+        //app.setComponentParams(componentName, params);
     }
 }
+export default MainLayout;

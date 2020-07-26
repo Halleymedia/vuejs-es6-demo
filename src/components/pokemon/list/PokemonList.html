@@ -1,6 +1,6 @@
 <div>
-    <ul class="pokemon-list" v-if="results" v-for="result in results">
-        <li><a :href="result.url">{{result.name}}</a></li>
+    <ul class="pokemon-list" data-if="{{results}}" data-for="{{result in results}}">
+        <li><a href="{{result.url}}">{{result.name}}</a></li>
     </ul>
-    <loading-indicator v-if="!results"></loading-indicator>
+    <loading-indicator data-if="{{!results}}"></loading-indicator>
 </div>

@@ -1,7 +1,7 @@
 <div>
-    <div v-if="result">
+    <div data-if="result">
         <h2>{{result.name}}</h2>
-        <img :src="result.picture">
+        <img src="{{result.picture}}">
         <dl class="pokemon-attributes">
             <dt>Types</dt>
             <dd>{{result.types}}</dd>
@@ -9,5 +9,5 @@
             <dd>{{result.moves}}</dd>
         </dl>
     </div>
-    <loading-indicator v-if="!result"></loading-indicator>
+    <loading-indicator data-if="{{!result}}"></loading-indicator>
 </div>

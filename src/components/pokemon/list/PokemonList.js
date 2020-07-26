@@ -1,9 +1,10 @@
-import { component } from 'services/decorators';
+import { Component } from 'services/Decorators';
+import template from './PokemonList.html';
 import PokemonResultDto from 'models/PokemonResultDto';
-import client from 'services/client';
+import client from 'services/Client';
 
-@component('pokemon-list', '^/$', 'Pokémon list')
-export default class PokemonList {
+@Component('pokemon-list', template, '^/$', 'Pokémon list')
+class PokemonList {
 
     /**
      * @type {PokemonResultDto[]|null}
@@ -18,3 +19,5 @@ export default class PokemonList {
         this.results = await client.listPokemon();
     }
 }
+
+export default PokemonList;
