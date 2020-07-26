@@ -7,36 +7,55 @@
     "**/node_modules": true,
     "**/dist": true
   },
+  //Enable the autocomplete extension (it could be omitted)
   "htmlConfigurableAutocomplete.enable": true,
+  //Tell it how to autocomplete HTML content
   "htmlConfigurableAutocomplete.completionItemProviders": [
     {
       "enable": true,
+      //It should be activated when < is pressed (for tag names)
       "triggerCharacters": ["<"],
+      //Then look into js files in the components directory
       "includeGlobPattern": "src/components/**/*.js",
+      //Find the component name in there and show it as a completion item
       "contentRegexp": "@Component\\(\\s*['\"]([a-z-]+)",
+      //It should have this icon
       "itemKind": "Constant"
     },
     {
       "enable": true,
+      //It should also be activated when space is pressed (for attributes)
       "triggerCharacters": [" "],
+      //But just when where in a custom component (it has a - symbol in the tag name)
       "triggerRegexp": "<[a-z]+-[a-z]+[^<]*",
+      //Show a couple statically-definited completion items
       "staticItems": ["data-for", "data-if"],
+      //It should have this icon
       "itemKind": "Enum"
     },
     {
       "enable": true,
+      //It should also be activated when { is pressed (for moustached syntax)
       "triggerCharacters": ["{"],
+      //But just when two { have been typed already
       "triggerRegexp": "{{",
+      //Go look inside a js file that has the same name and lives in the same directory
       "includeGlobPattern": "${dirPath}${fileNameWithoutExtension}[.]js",
+      //And inside of it, look for fields (I know, I know, this should be more robust and maybe use a proper js parser)
       "contentRegexp": "^\\s*([a-z0-9_]+)\\s*;?\\s*$",
+      //It should have this icon
       "itemKind": "Field"
     }
   ],
+  //Now tell it how to navigate to definitions
   "htmlConfigurableAutocomplete.definitionProviders": [
     {
       "enable": true,
+      //Definitions are provided when the cursor is on tag names having a - in them
       "definitionRegexp": "</?([a-z]+-[a-z]+)",
+      //Then go look inside js files that live in the components directory
       "includeGlobPattern": "src/components/**/*.js",
+      //And find that very same tag name in them; if one is found, VSCode navigates to definition!
       "contentRegexp": "@Component\\(\\s*['\"]([a-z-]+)"
     }
   ]
