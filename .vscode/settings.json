@@ -7,11 +7,12 @@
     "**/node_modules": true,
     "**/dist": true
   },
-  //Enable the autocomplete extension (it could be omitted)
+  //Enable the extension (it can be omitted)
   "htmlConfigurableAutocomplete.enable": true,
   //Tell it how to autocomplete HTML content
   "htmlConfigurableAutocomplete.completionItemProviders": [
     {
+      //Can be omitted
       "enable": true,
       //It should be activated when < is pressed (for tag names)
       "triggerCharacters": ["<"],
@@ -23,17 +24,19 @@
       "itemKind": "Constant"
     },
     {
+      //Can be omitted
       "enable": true,
       //It should also be activated when space is pressed (for attributes)
       "triggerCharacters": [" "],
-      //But just when where in a custom component (it has a - symbol in the tag name)
-      "triggerRegexp": "<[a-z]+-[a-z]+[^<]*",
-      //Show a couple statically-definited completion items
+      //But just when the cursor is in an element tag, at a position where an attribute name can be inserted
+      "triggerRegexp": "<[a-z-]+(\\s+[a-z-]+(=\".*?\")?)*[^\"<>]*",
+      //Show a couple statically-defined completion items
       "staticItems": ["data-for", "data-if"],
-      //It should have this icon
+      //They should have this icon
       "itemKind": "Enum"
     },
     {
+      //Can be omitted
       "enable": true,
       //It should also be activated when { is pressed (for moustached syntax)
       "triggerCharacters": ["{"],
@@ -50,6 +53,7 @@
   //Now tell it how to navigate to definitions
   "htmlConfigurableAutocomplete.definitionProviders": [
     {
+      //Can be omitted
       "enable": true,
       //Definitions are provided when the cursor is on tag names having a - in them
       "definitionRegexp": "</?([a-z]+-[a-z]+)",
@@ -57,6 +61,16 @@
       "includeGlobPattern": "src/components/**/*.js",
       //And find that very same tag name in them; if one is found, VSCode navigates to definition!
       "contentRegexp": "@Component\\(\\s*['\"]([a-z-]+)"
+    },
+    {
+      //Can be omitted
+      "enable": true,
+      //Definitions are provided when the cursor is inside moustaches
+      "definitionRegexp": "{{\\s*(.+?)\\s*}}",
+      //Then go look inside js file that lives in the same directory and has the same name with the js extension
+      "includeGlobPattern": "${dirPath}${fileNameWithoutExtension}[.]js",
+      //Then find the field it's referring to
+      "contentRegexp": "^\\s*([a-z0-9_]+)\\s*;?\\s*$"
     }
   ]
   

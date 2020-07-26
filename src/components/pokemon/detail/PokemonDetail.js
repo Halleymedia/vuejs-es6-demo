@@ -7,7 +7,7 @@ import client from 'services/Client';
 class PokemonDetail {
 
     /** @type {PokemonDetailDto|null} */
-    result = null;
+    result;
 
     /**
      * @param {Object} obj
@@ -15,12 +15,12 @@ class PokemonDetail {
      */
     constructor({id}) //This is the same <id> that was captured in the URL
     {
+        this.result = null;
         this.load(id);
     }
 
     /** @param {Number} id */
     async load(id) {
-        console.log("ID", id);
         const result = await client.getPokemon(id);
         this.result = result;
     }
