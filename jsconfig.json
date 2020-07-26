@@ -10,7 +10,8 @@
         "paths": {
             "components/*": ["./src/components/*"],
             "models/*": ["./src/models/*"],
-            "services/*": ["./src/services/*"]
+            "services/*": ["./src/services/*"],
+            "vue": ["./node_modules/vue/dist/vue.min.js"]
         }
     }
 }

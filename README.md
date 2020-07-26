@@ -6,10 +6,11 @@ A quick experiment into modern JavaScript development with the MVVM pattern.
 ## Why it's cool
  * Small, single resposibility components;
  * Simple ES6 classes, nicely decoupled from the rendering library (Vue.js in this case);
+ * This project is basically _frameworkless_, since nothing of the Vue.js syntax emerge in the code;
  * It leverages language capabilities: use public properties to expose data to the view; keep them private for state;
  * Use of decorators to configure components and their route pattern;
  * Navigation parameters are passed in as constructor arguments;
- * All scripts, templates and SVG images packed in a single `index.js` file thanks to Webpack;
+ * All scripts, templates, styles and SVG images are packed into a single `index.js` file thanks to Webpack;
  * Works on Internet Explorer 11;
  * Live reloading for improved productivity;
  * Pokémon.

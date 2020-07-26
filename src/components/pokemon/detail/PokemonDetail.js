@@ -1,5 +1,5 @@
 import { Component } from 'services/Decorators';
-import template from 'PokemonDetail.html';
+import template from './PokemonDetail.html';
 import PokemonDetailDto from 'models/PokemonDetailDto';
 import client from 'services/Client';
 
@@ -20,6 +20,7 @@ class PokemonDetail {
 
     /** @param {Number} id */
     async load(id) {
+        console.log("ID", id);
         const result = await client.getPokemon(id);
         this.result = result;
     }

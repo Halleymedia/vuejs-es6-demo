@@ -37,13 +37,11 @@ const pageLoad = async (location, router) => {
  * @param { Event } event
  */
 const preventNavigation = (history, event) => {
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement|null} */
     let target = (/** @type {HTMLElement} */ event.target);
     while (target) {
         if (target.tagName.toLowerCase() != 'a') {
-            if (target.parentElement) {
-                target = target.parentElement;
-            }
+            target = target.parentElement;
             continue;
         }
         const href = target.getAttribute('href');
@@ -56,6 +54,7 @@ const preventNavigation = (history, event) => {
         event.preventDefault();
         event.stopPropagation();
         processPath(href);
+        break;
     }
 };
 
@@ -147,7 +146,8 @@ export class Router {
 
 const global = typeof window !== 'undefined' ? window : globalThis; //IE11 does not have the globalThis keyword
 
-export default new Router( //TODO: Decouple this from globals. They should be provided by the HTML page or maybe use the 'globalThis' keyword.
+export default Router;
+export const router = new Router( //TODO: Decouple this from globals. They should be provided by the HTML page
         global.location,
         global.history,
         //Can't use addEventListener.bind here or it won't work on IE11 because it's a native method

@@ -1,4 +1,5 @@
 import { componentRegistry } from 'services/ComponentRegistry';
+import { router } from 'services/Router';
 
 /**
  * @param {string} elementName
@@ -47,4 +48,8 @@ export const Component = (elementName, template, route = undefined, title = unde
             componentRegistry.registerComponentProperties(target, propertyNames);
             componentRegistry.registerComponentComputed(target, computedNames);
             componentRegistry.registerComponentTemplate(target, template);
+
+            if (route) {
+                router.addRoute(elementName, route, title);
+            }
     };

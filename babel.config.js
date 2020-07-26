@@ -34,7 +34,8 @@
                     "alias": {
                         "components": "./src/components",
                         "services": "./src/services",
-                        "models": "./src/models"
+                        "models": "./src/models",
+                        "vue": "./node_modules/vue/dist/vue.min.js"
                     }
                 }
             ]

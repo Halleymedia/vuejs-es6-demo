@@ -7,9 +7,9 @@ import client from 'services/Client';
 class PokemonList {
 
     /**
-     * @type {PokemonResultDto[]|null}
+     * @type {PokemonResultDto[]|undefined}
      */
-    results = null;
+    results;
 
     constructor() {
         this.load();

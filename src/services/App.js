@@ -1,13 +1,6 @@
-import Vue from 'vue/dist/vue';
-import { componentRegistry } from 'services/ComponentRegistry';
+import Vue from 'vue';
 import VueComponentAdapter from 'services/VueComponentAdapter';
-import 'regenerator-runtime/runtime';
-//Necessary to IE11
-import 'core-js/features/symbol';
-import 'core-js/features/promise';
-import 'core-js/features/array/of';
-import 'whatwg-fetch';
-import 'regexp-polyfill';
+import { componentRegistry } from 'services/ComponentRegistry';
 
 class App {
 

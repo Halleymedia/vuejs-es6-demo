@@ -92,7 +92,8 @@ export default class ComponentRegistry {
          * @type {Array<VueComponentDescriptor>}
          */
         const results = [];
-        this.#descriptors.forEach(descriptor => results.push(descriptor.clone())); //TODO: we could use the 'values' property here and the spread operator but those are not supported by IE11 so that would need a polyfill or a babel transform
+        //TODO: should clone descriptors
+        this.#descriptors.forEach(descriptor => results.push(descriptor)); //TODO: we could use the 'values' property here and the spread operator but those are not supported by IE11 so that would need a polyfill or a babel transform
         return results;
     }
 }

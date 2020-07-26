@@ -1,6 +1,7 @@
 import { Component } from 'services/Decorators'; 
+import { router } from 'services/Router';
+import { componentRegistry } from 'services/ComponentRegistry';
 import template from './MainLayout.html';
-import router from 'services/Router';
 
 @Component('main-layout', template)
 class MainLayout {
@@ -8,7 +9,7 @@ class MainLayout {
     /**
      * @type {string|undefined}
      */
-    componentName;
+    component;
 
     /**
      * @type {string|undefined}
@@ -20,14 +21,14 @@ class MainLayout {
     }
 
     /**
-     * @param {String} componentName
+     * @param {string} elementName
      * @param {any} params
-     * @param {String} title
+     * @param {string} title
      */
-    async onNavigated(componentName, params, title) {
-        this.componentName = componentName;
+    async onNavigated(elementName, params, title) {
+        this.component = elementName;
         this.title = title;
-        //app.setComponentParams(componentName, params);
+        componentRegistry.setComponentParams(elementName, params);
     }
 }
 export default MainLayout;

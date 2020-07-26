@@ -39,10 +39,11 @@ module.exports = {
                     },
                     preprocessor: /** @param {string} content */ (content) => {
                         //Convert moustache syntax to Vue template syntax
-                        return content.replace(/\son([a-z-]+)="{{\s*(.*?)\s*}}"/gi, ' @$1="$2"')
-                                      .replace(/\s([a-z-]+)="{{\s*(.*?)\s*}}"/gi, ' :$1="$2"')
+                        return content
                                       .replace(/\sdata-if="{{\s*(.*?)\s*}}"/gi, ' v-if="$1"')
-                                      .replace(/\sdata-for="{{\s*(.*?)\s*}}"/gi, ' v-for="$1"');
+                                      .replace(/\sdata-for="{{\s*(.*?)\s*}}"/gi, ' v-for="$1"')
+                                      .replace(/\son([a-z-]+)="{{\s*(.*?)\s*}}"/gi, ' @$1="$2"')
+                                      .replace(/\s([a-z-]+)="{{\s*(.*?)\s*}}"/gi, ' :$1="$2"');
                     }
                 }
             },
