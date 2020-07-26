@@ -6,5 +6,39 @@
     "**/.DS_Store": true,
     "**/node_modules": true,
     "**/dist": true
-  }
+  },
+  "htmlConfigurableAutocomplete.enable": true,
+  "htmlConfigurableAutocomplete.completionItemProviders": [
+    {
+      "enable": true,
+      "triggerCharacters": ["<"],
+      "includeGlobPattern": "src/components/**/*.js",
+      "contentRegexp": "@Component\\(\\s*['\"]([a-z-]+)",
+      "itemKind": "Constant"
+    },
+    {
+      "enable": true,
+      "triggerCharacters": [" "],
+      "triggerRegexp": "<[a-z]+-[a-z]+[^<]*",
+      "staticItems": ["data-for", "data-if"],
+      "itemKind": "Enum"
+    },
+    {
+      "enable": true,
+      "triggerCharacters": ["{"],
+      "triggerRegexp": "{{",
+      "includeGlobPattern": "${dirPath}${fileNameWithoutExtension}[.]js",
+      "contentRegexp": "^\\s*([a-z0-9_]+)\\s*;?\\s*$",
+      "itemKind": "Field"
+    }
+  ],
+  "htmlConfigurableAutocomplete.definitionProviders": [
+    {
+      "enable": true,
+      "definitionRegexp": "</?([a-z]+-[a-z]+)",
+      "includeGlobPattern": "src/components/**/*.js",
+      "contentRegexp": "@Component\\(\\s*['\"]([a-z-]+)"
+    }
+  ]
+  
 }

@@ -29,6 +29,11 @@ This project supports debugging with the [Debugger for Chrome Extension](https:/
 
 ![images/debug.gif](images/debug.gif)
 
+## Autocomplete
+If you add the HTML Configurable Autocomplete extension to the project, you'll have autocomplete when editing your views. See how it's been configured in the [.vscode/settings.json](.vscode/settings.json) file.
+
+![completion.gif](completion.gif)
+
 ## TODO
  * Event publishing and handling;
- * Unit testing.
+ * Unit and E2E testing.
