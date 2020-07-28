@@ -34,6 +34,11 @@ If you add the HTML Configurable Autocomplete extension to the project, you'll h
 
 ![completion.gif](completion.gif)
 
+Supported features:
+ * Element name, attribute name and attribute value auto-completion;
+ * Navigate to component definition;
+ * Find references of component.
+
 ## TODO
  * Event publishing and handling;
  * Unit and E2E testing.
