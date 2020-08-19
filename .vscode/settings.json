@@ -53,8 +53,12 @@
       "triggerRegexp": "<[a-z-]+(\\s+[a-z-]+(=\".*?\")?)*[^\"<>]*",
       //Let's go look for this component definition and get its public fields (the definition is found thanks to the definition provider configured below)
       "includeGlobPattern": "${definitionFilePath}",
-      //And inside of it, look for fields (I know, I know, this should be less naive and maybe use a proper js parser, which maybe I'll implement soon)
-      "contentRegexp": "^\\s*([a-z0-9_]+)\\s*;?\\s*$",
+      //Transform original JavaScript content into a list of class and member definitions
+      "contentTransformer": "es6-module-nodes",
+      //And inside of it, look for setter methods
+      "contentRegexp": "instance public set ([a-z0-9_]+)",
+      //JavaScript properties are in camel case, so we transform them in kebab case since they will be used as element attributes
+      "completionItemTransformer": "camelcase-to-kebabcase",
       //They should have this icon
       "itemKind": "Field"
     },
@@ -69,8 +73,10 @@
       "triggerRegexp": "{{",
       //Go look inside a js file that has the same name and lives in the same directory
       "includeGlobPattern": "${dirPath}${fileNameWithoutExtension}[.]js",
-      //And inside of it, look for fields (again, it should use a less naive approach)
-      "contentRegexp": "^\\s*([a-z0-9_]+)\\s*;?\\s*$",
+      //Transform JS content as a list of class and members definitions
+      "contentTransformer": "es6-module-nodes",
+      //And inside of it, look for properties
+      "contentRegexp": "instance public property ([a-z0-9_]+)",
       //It should have this icon
       "itemKind": "Field"
     }

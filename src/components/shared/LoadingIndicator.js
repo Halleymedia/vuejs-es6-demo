@@ -4,8 +4,11 @@ import template from './LoadingIndicator.html';
 @Component('loading-indicator', template)
 class LoadingIndicator {
     /**
-     * @type {boolean|undefined}
+     * @param {boolean|undefined} value
      */
-    animated;
+    set animated(value) {
+        //TODO: do something with value
+        console.log("The animated property was set to", value)
+    }
 }
 export default LoadingIndicator;
