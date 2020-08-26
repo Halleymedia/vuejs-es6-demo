@@ -1,6 +1,7 @@
 {
     "recommendations": [
       "msjsdiag.debugger-for-chrome",
-      "brightsoul.html-configurable-autocomplete"
+      "brightsoul.html-configurable-autocomplete",
+      "chenxsan.vscode-standardjs"
     ]
   }

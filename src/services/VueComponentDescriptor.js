@@ -1,5 +1,4 @@
 export default class VueComponentDescriptor {
-
     /**
      * @type {any}
      */
@@ -44,120 +43,120 @@ export default class VueComponentDescriptor {
      * Creates a new descriptor instance
      * @param {any} componentKey
      */
-    constructor(componentKey) {
-        this.#methods = [];
-        this.#computed = [];
-        this.#properties = [];
-        this.#componentKey = componentKey;
-        this.#template = '';
-        this.#elementName = '';
-        this.#componentConstructor = class {};
+    constructor (componentKey) {
+      this.#methods = []
+      this.#computed = []
+      this.#properties = []
+      this.#componentKey = componentKey
+      this.#template = ''
+      this.#elementName = ''
+      this.#componentConstructor = class {}
     }
 
     /**
      * Params passed to the constructor
      * @type {any}
      */
-    get params() {
-        return this.#params;
+    get params () {
+      return this.#params
     }
 
-    set params(value) {
-        this.#params = value;
+    set params (value) {
+      this.#params = value
     }
 
     /**
      * Key of the component
      * @type {any}
      */
-    get componentKey() {
-        return this.#componentKey;
+    get componentKey () {
+      return this.#componentKey
     }
 
     /**
      * Name of the element
      * @type {string}
      */
-    get elementName() {
-        return this.#elementName;
+    get elementName () {
+      return this.#elementName
     }
 
-    set elementName(value) {
-        this.#elementName = value;
+    set elementName (value) {
+      this.#elementName = value
     }
 
     /**
      * Constructor of the component
      * @type {new (params: any) => any}
      */
-    get componentConstructor() {
-        return this.#componentConstructor;
+    get componentConstructor () {
+      return this.#componentConstructor
     }
 
-    set componentConstructor(value) {
-        this.#componentConstructor = value;
+    set componentConstructor (value) {
+      this.#componentConstructor = value
     }
 
     /**
      * Public methods of the component
      * @type {Array<string>}
      */
-    get methods() {
-        return this.#methods;
+    get methods () {
+      return this.#methods
     }
 
-    set methods(value) {
-        this.#methods = value;
+    set methods (value) {
+      this.#methods = value
     }
 
     /**
      * Computed properties of the component
      * @type {Array<string>}
      */
-    get computed() {
-        return this.#computed;
+    get computed () {
+      return this.#computed
     }
 
-    set computed(value) {
-        this.#computed = value;
+    set computed (value) {
+      this.#computed = value
     }
 
     /**
      * Public properties of the component
      * @type {Array<string>}
      */
-    get properties() {
-        return this.#properties;
+    get properties () {
+      return this.#properties
     }
 
-    set properties(value) {
-        this.#properties = value;
+    set properties (value) {
+      this.#properties = value
     }
 
     /**
      * HTML template of the component
      * @type {string}
      */
-    get template() {
-        return this.#template;
+    get template () {
+      return this.#template
     }
 
-    set template(value) {
-        this.#template = value;
+    set template (value) {
+      this.#template = value
     }
 
     /**
      * @returns {VueComponentDescriptor}
      */
-    clone() {
-        const descriptor = new VueComponentDescriptor(this.#componentKey);
-        descriptor.template = this.template;
-        descriptor.properties = this.properties;
-        descriptor.computed = this.computed;
-        descriptor.methods = this.methods;
-        descriptor.componentConstructor = this.componentConstructor;
-        descriptor.elementName = this.elementName;
-        descriptor.params = Object.assign({}, this.params || {});
-        return descriptor;
+    clone () {
+      const descriptor = new VueComponentDescriptor(this.#componentKey)
+      descriptor.template = this.template
+      descriptor.properties = this.properties
+      descriptor.computed = this.computed
+      descriptor.methods = this.methods
+      descriptor.componentConstructor = this.componentConstructor
+      descriptor.elementName = this.elementName
+      descriptor.params = Object.assign({}, this.params || {})
+      return descriptor
     }
 }

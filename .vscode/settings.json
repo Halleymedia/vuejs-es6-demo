@@ -1,6 +1,7 @@
 {
   "eslint.enable": true,
   "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "editor.tabSize": 2,
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
@@ -9,6 +10,8 @@
   },
   //Enable the extension (it can be omitted)
   "htmlConfigurableAutocomplete.enable": true,
+  //Enable verbose logging
+  "htmlConfigurableAutocomplete.debug": true,
   //Tell it how to autocomplete HTML content
   "htmlConfigurableAutocomplete.completionItemProviders": [
     {
@@ -47,6 +50,25 @@
       "enable": true,
       //It should also be activated when space is pressed (for attributes)
       "triggerCharacters": [
+        "{"
+      ],
+      //But just when the cursor is in descendant of an element with the data-for attribute tag, at a position where an attribute name can be inserted
+      "triggerRegexp": "data-for=.*?>.*{{",
+      //Before executing triggerRexep though, flatten the HTML of the current document
+      "triggerTransformer": "flatten-html",
+      //Show a couple statically-defined completion items
+      "staticItems": [
+        "$item",
+        "$index"
+      ],
+      //They should have this icon
+      "itemKind": "Enum"
+    },
+    {
+      //Can be omitted
+      "enable": true,
+      //It should also be activated when space is pressed (for attributes)
+      "triggerCharacters": [
         " "
       ],
       //But just when the cursor is in an element tag, at a position where an attribute name can be inserted
@@ -59,6 +81,8 @@
       "contentRegexp": "instance public set ([a-z0-9_]+)",
       //JavaScript properties are in camel case, so we transform them in kebab case since they will be used as element attributes
       "completionItemTransformer": "camelcase-to-kebabcase",
+      //We're typing an attribute name here, so let's help the user by adding ="" right after. The cursor will stop in between double quotes
+      "completionItemSuffix": "=\"\t\"",
       //They should have this icon
       "itemKind": "Field"
     },

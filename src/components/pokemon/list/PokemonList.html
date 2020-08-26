@@ -1,6 +1,6 @@
 <div>
-    <ul class="pokemon-list" data-if="{{results}}" data-for="{{result in results}}">
-        <li><a href="{{result.url}}">{{result.name}}</a></li>
+    <ul class="pokemon-list" data-if="{{results}}" data-for="{{results}}">
+        <li><a href="{{$item.url}}">{{$item.name}}</a></li>
     </ul>
     <loading-indicator data-if="{{!results}}"></loading-indicator>
 </div>
