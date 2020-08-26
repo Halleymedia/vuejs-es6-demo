@@ -42,6 +42,8 @@
         "data-for",
         "data-if"
       ],
+      // We're typing an attribute name here, so let's help the user by adding ="" right after. The cursor will stop in between double quotes
+      "completionItemSuffix": "=\"\t\"",
       // They should have this icon
       "itemKind": "Enum"
     },
