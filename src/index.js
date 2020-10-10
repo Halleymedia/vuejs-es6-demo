@@ -7,6 +7,7 @@ import 'whatwg-fetch'
 import 'regexp-polyfill'
 
 import App from 'services/App.js'
+import localization from './localization.json'
 
 /**
  * Imports all components since they're not statically referenced with import.
@@ -22,3 +23,4 @@ importAll(require.context('./components', true, /\.(js|scss)$/))
  */
 const global = window
 global.App = App
+global.localization = localization

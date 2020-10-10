@@ -89,6 +89,40 @@
       "itemKind": "Field"
     },
     {
+      // Fixed config
+      "enable": true,
+      // It should also be activated when { is pressed (for moustached syntax)
+      "triggerCharacters": [
+        "{", " "
+      ],
+      // But just when two { have been typed already
+      "triggerRegexp": "{{\\s*",
+      "staticItems": [
+        "localization"
+      ],
+      "completionItemSuffix": ".",
+      // It should have this icon
+      "itemKind": "Constant"
+    },
+    {
+      // Can be omitted
+      "enable": true,
+      // It should also be activated when { or . is pressed
+      "triggerCharacters": [
+        "{", "."
+      ],
+      // But just when two { have been typed already and also when 'localization' has been typed
+      "triggerRegexp": "{{\\s*localization\\.([^} ]*)",
+      // Go look inside the localization JSON file
+      "includeGlobPattern": "src/localization[.]json",
+      // Transform JSON content to a flattened hierarchy
+      "contentTransformer": "flatten-json",
+      // And inside of it, look for properties. The $1 placeholder will be substituted by the capture in triggerRegexp (i.e. what the user typed)
+      "contentRegexp": " $1([a-z0-9_]+)",
+      // It should have this icon
+      "itemKind": "Field"
+    },
+    {
       // Can be omitted
       "enable": true,
       // It should also be activated when { is pressed (for moustached syntax)

@@ -3,6 +3,7 @@ import template from './LoadingIndicator.html'
 
 @Component('loading-indicator', template)
 class LoadingIndicator {
+  val;
   /**
      * @param {boolean|undefined} value
      */
