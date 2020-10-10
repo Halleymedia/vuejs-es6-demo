@@ -97,6 +97,7 @@
       ],
       // But just when two { have been typed already
       "triggerRegexp": "{{\\s*",
+      // This is a global property we can use in the html views
       "staticItems": [
         "localization"
       ],
